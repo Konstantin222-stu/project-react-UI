@@ -1,0 +1,36 @@
+/* .App {
+  margin: 0 auto;
+  display: flex;
+  width: 450px;
+  flex-wrap: wrap;
+  gap: 100px;
+} */
+
+.wrap{
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.buttons{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+  margin-bottom: 50px;
+}
+
+.row1{
+  width: 200px;
+}
+
+.row2{
+  width: 450px;
+}
+
+.row3{
+  width: 700px;
+}
+
+.row4{
+  width: 991px;
+}
