@@ -1,10 +1,10 @@
 .sm{
-    width: 70px;
-    height: 30px;
+    width: 90px;
+    height: 40px;
 }
 
 .md{
-    width: 90px;
+    width: 100px;
     height: 50px;
 
 }
@@ -76,7 +76,6 @@ button:disabled{
 }
 
 .disableShadow{
-    color: #fff;
     box-shadow: none;
 }
 
