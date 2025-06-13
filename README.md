@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+UI Components Library (Учебный проект)
+📚 О проекте
+Этот репозиторий представляет собой учебный проект по созданию библиотеки UI-компонентов на React. Проект разработан для освоения лучших практик создания повторно используемых компонентов с различными состояниями и свойствами.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🎯 Цели проекта
+Изучение принципов создания компонентного UI
 
-## Available Scripts
+Практика работы с React и пропсами (props)
 
-In the project directory, you can run:
+Разработка доступных и удобных компонентов
 
-### `npm start`
+Освоение различных состояний компонентов (hover, focus, disabled и др.)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Создание документации для компонентов
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🧩 Компоненты
+🅱️ Кнопка (Button)
+Функциональность:
 
-### `npm test`
+Варианты отображения: обычная, контурная (outline), текстовая (text)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Размеры: sm (маленькая), md (средняя), lg (большая)
 
-### `npm run build`
+Цветовые схемы: default, primary, secondary, danger
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Состояния: активная, disabled (неактивная)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Дополнительно: отключение тени (disableShadow)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+🔤 Поле ввода (Input)
+Функциональность:
 
-### `npm run eject`
+Состояния: обычное, с ошибкой (error), disabled
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Вспомогательный текст (helperText)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Иконки: в начале (startIcon) и в конце (endIcon)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Размеры: sm, md
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Полноширинный вариант (fullWidth)
 
-## Learn More
+Многострочный ввод (multiline)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Поддержка placeholder и значения по умолчанию
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🛠 Технологии
+React (функциональные компоненты)
 
-### Code Splitting
+CSS (модули)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+React Hooks (useState, useRef, кастомные хуки)
 
-### Analyzing the Bundle Size
+Пропсы (props) для настройки компонентов
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+🚀 Как начать
+Клонируйте репозиторий:
 
-### Making a Progressive Web App
+bash
+git clone https://github.com/ваш-username/ui-components-library.git
+Установите зависимости:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+bash
+npm install
+Запустите проект:
 
-### Advanced Configuration
+bash
+npm start
+📖 Документация компонентов
+Каждый компонент имеет:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Подробное описание всех пропсов
 
-### Deployment
+Примеры использования
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Визуальную демонстрацию всех вариантов
 
-### `npm run build` fails to minify
+📝 Примеры использования
+Кнопка
+jsx
+<Button 
+  variant="outline" 
+  size="lg" 
+  color="primary" 
+  disabled={false}
+>
+  Отправить
+</Button>
+Поле ввода
+jsx
+<Input
+  placeholder="Введите email"
+  helperText="Введите корректный email"
+  error={false}
+  startIcon
+/>
+📊 Структура проекта
+text
+/src
+  /components
+    /UI
+      /Button
+        Button.js
+        button.css
+      /Input
+        Input.js
+        input.css
+  /hooks
+    useHover.js
+    useFocus.js
+  App.js
+🤝 Как внести вклад
+Это учебный проект, но если вы хотите предложить улучшения:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Форкните репозиторий
+
+Создайте ветку с вашими изменениями
+
+Откройте Pull Request
+
+📜 Лицензия
