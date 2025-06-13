@@ -1,87 +1,91 @@
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
-import "./input.css"
+import React, { useRef, useMemo } from "react";
+import "./input.css";
 import useHover from "../../hooks/useHover";
 import useFocus from "../../hooks/useFocus";
-const Input = ({error, disabled, helperText, startIcon, endIcon, value, size, fullWidth, multiline, row} ) =>{
-    const ref = useRef()
-    const isHovering = useHover(ref)
-    const isFocusing = useFocus(ref)
+
+const Input = ({
+  error = false,
+  disabled = false,
+  helperText,
+  startIcon = false,
+  endIcon = false,
+  value,
+  size,
+  fullWidth = false,
+  multiline = false,
+  row = 1
+}) => {
+  const ref = useRef();
+  const isHovering = useHover(ref);
+  const isFocusing = useFocus(ref);
+
+  // Определяем классы для инпута
+  const inputClasses = useMemo(() => {
+    const classes = [
+      error ? 'error' : '',
+      startIcon ? 'input__img_start' : endIcon ? 'input__img_end' : ''
+    ].filter(Boolean);
     
-    const isErro = (error) =>{
-        if(error){
-            return'error'
-        }
-        return''
-    }
+    return [...classes, 'input'].join(' ');
+  }, [error, startIcon, endIcon]);
 
-    const isImageInput = (startIcon,endIcon) => {
-        if(startIcon){
-            return 'input__img_start'
-        }
-        else if(endIcon){
-            return 'input__img_end'
-        }
-        return ''
-    }
+  // Определяем стили для инпута
+  const inputStyles = useMemo(() => {
+    const styles = {};
+    
+    if (size === 'sm') styles.height = '20px';
+    else if (size === 'md') styles.height = '60px';
+    
+    if (fullWidth) styles.width = '100%';
+    
+    return styles;
+  }, [size, fullWidth]);
 
-    const setSize = (size)=> {
-        if(size == 'sm'){
-            return({height: 20})
-        }
-        else if(size == 'md'){
-            return({height: 60})
-        }
-        return 
-    }
+  // Определяем цвет текста для label и helperText
+  const textColor = useMemo(() => {
+    if (isHovering && error && !isFocusing) return '#000';
+    if (error && isFocusing) return '#D32F2F';
+    if (!isHovering && error && !isFocusing) return '#D32F2F';
+    if (!error && isFocusing) return '#5A72FE';
+    return '#000';
+  }, [error, isHovering, isFocusing]);
 
-    const isFullWidth = (fullWidth)=> {
-        if(fullWidth){
-            return({width: '100%'})
-        }
-        return 
-    }
+  return (
+    <div className="input__content">
+      {helperText && (
+        <p className="label" style={{ color: textColor }}>
+          {helperText}
+        </p>
+      )}
 
-    const setColor = (error, isHovering,isFocusing) =>{
-        if(isHovering && error && !isFocusing){
-            return '#000'
-        }
-        else if(error && isFocusing){
-            return '#D32F2F'
-        }
-        else if(!isHovering && error && !isFocusing){
-            return '#D32F2F'
-        }
-        else if(!isHovering && !error && !isFocusing){
-            return '#000'
-        }
-        else if(!error && isFocusing){
-            return '#5A72FE'
-        }
-        return '#000'
-        
-    }
-    const styleSize = setSize(size)
-    const styleFullWidth =isFullWidth(fullWidth)
-    const rootStyle ={...styleSize, ...styleFullWidth}
+      {multiline ? (
+        <textarea
+          ref={ref}
+          name="postContent"
+          rows={row}
+          style={inputStyles}
+          className={inputClasses}
+          placeholder="Placeholder"
+          disabled={disabled}
+          value={value}
+        />
+      ) : (
+        <input
+          ref={ref}
+          type="text"
+          style={inputStyles}
+          className={inputClasses}
+          placeholder="Placeholder"
+          disabled={disabled}
+          value={value}
+        />
+      )}
 
-    const rootClass = [isErro(error),isImageInput(startIcon,endIcon)]
+      <label className="label" style={{ color: textColor }}>
+        Label
+      </label>
+    </div>
+  );
+};
 
-    return(
-        <div className="input__content">
-            {helperText &&
-            <p className="label" style={{color: setColor(error,isHovering,isFocusing)}}>{helperText}</p>
-            }
-            {multiline? 
-            <textarea name="postContent"  ref={ref} rows={row} style={rootStyle} className={rootClass.join(' ')+' input'} placeholder="Placeholder" disabled={disabled} value={value}/>
-            :
-            <input style={rootStyle} ref={ref} type="text" className={rootClass.join(' ')+' input'}  placeholder="Placeholder" disabled={disabled} value={value}/>
-            }
-            
-            <label className="label"  style={{color: setColor(error,isHovering,isFocusing)}}>Label</label>
-            
-        </div>
-
-    )
-}
-
-export default Input
+export default Input;

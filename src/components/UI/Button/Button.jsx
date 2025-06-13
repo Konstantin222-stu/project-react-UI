@@ -1,18 +1,19 @@
 import React from "react";
-import "./button.css"
+import "./button.css";
 
-const Button = ({variant, disableShadow, disabled, size, color}) => {
-    let disableShadowStyle=''
-    if(disableShadow){
-        disableShadowStyle='disableShadow'
-    }
-    else{
-        disableShadowStyle=''
-    }
-    const rootClass = [variant,disableShadowStyle, size, color]
-    return(
-        <button className={rootClass.join(' ')} disabled={disabled} >Default</button>
-    )
-}
+const Button = ({ variant, disableShadow, disabled, size, color, children = "Default" }) => {
+  const rootClass = [
+    variant,
+    disableShadow ? 'disableShadow' : '',
+    size,
+    color
+  ].filter(Boolean).join(' ');
 
-export default Button
+  return (
+    <button className={rootClass} disabled={disabled}>
+      {children}
+    </button>
+  );
+};
+
+export default Button;
